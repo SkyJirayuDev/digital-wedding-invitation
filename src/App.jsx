@@ -140,7 +140,7 @@ function App() {
           className="wedding-img"
         />
         <img
-          src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471935/schedule_ly1d9u.png"
+          src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752492697/schedule-final_tf2vmu.png"
           alt="Schedule Image"
           className="schedule-img"
         />
@@ -148,16 +148,14 @@ function App() {
 
       <section className="gallery-section">
         <h2>Gallery</h2>
-        <div>
+        <div className="video-wrapper">
           <iframe
-            width="560"
-            height="315"
             src="https://www.youtube.com/embed/AR3vQpwamug?si=Xjn5p7AnN5JvI5Wj"
             title="YouTube video player"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
           ></iframe>
         </div>
         <div className="gallery-images" ref={galleryRef}>
@@ -281,7 +279,11 @@ function App() {
         <button
           className="map-button"
           onClick={() =>
-            window.open("https://goo.gl/maps/s78Zu95dt7T4S8s57", "_blank")
+            window.open(
+              "https://maps.app.goo.gl/2kj2jUnsaui2b3er7",
+              "_blank",
+              "noopener,noreferrer"
+            )
           }
         >
           DIRECTION
