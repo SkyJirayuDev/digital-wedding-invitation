@@ -147,7 +147,7 @@ function App() {
       </section>
 
       <section className="gallery-section">
-        <h2>Gallery</h2>
+        <h2>GALLERY</h2>
         <div className="video-wrapper">
           <iframe
             src="https://www.youtube.com/embed/AR3vQpwamug?si=Xjn5p7AnN5JvI5Wj"

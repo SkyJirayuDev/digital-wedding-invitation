@@ -37,16 +37,19 @@ body {
   }
 }
 header {
-  text-align: center;
+  position: relative;
   background-image: url("https://res.cloudinary.com/dslqqqxil/image/upload/v1752471257/IMG_0132_2_dlm7nb.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   height: 100vh;
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: center; 
+  align-items: start;      
+  padding-top: 1rem;       
 }
 header .logo {
-  top: 16px;
   max-width: 380px;
   height: auto;
   object-fit: contain;
@@ -79,7 +82,7 @@ video {
 .couple-title {
   font-size: 1.25rem;
   font-weight: 500;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 .couple-container {
   display: flex;
@@ -159,7 +162,7 @@ video {
   background: #fff;
 }
 .schedule-section h2 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 .wedding-img {
@@ -189,10 +192,14 @@ video {
   border: none;
 }
 .gallery-section {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   padding: 2rem 1rem;
   background-color: #fff;
   text-align: center;
+}
+.gallery-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 .gallery-images {
   display: flex;
@@ -229,7 +236,7 @@ video {
   margin-top: 1rem;
 }
 .rsvp-section {
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -249,9 +256,9 @@ video {
   margin-bottom: 2rem;
 }
 .rsvp-text h2 {
-  font-size: 1.25rem;
-  letter-spacing: 0.25rem;
+  font-size: 1.5rem;
   margin-bottom: 2rem;
+  letter-spacing: 0.25rem;
 }
 .rsvp-text button {
   color: #333;
@@ -288,7 +295,7 @@ video {
 }
 .map-section h3 {
   font-size: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 .map-section p {
   margin-top: 0;
@@ -309,7 +316,7 @@ video {
   justify-content: center;
   font-size: 0.9rem;
   gap: 0.5rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 .map-button {
   color: #333;
@@ -332,7 +339,7 @@ video {
   background: #fff;
 }
 .wish-section h2 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 500;
   letter-spacing: 0.2rem;
   margin-bottom: 2rem;
