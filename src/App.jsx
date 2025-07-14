@@ -2,9 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./wedding.css";
 
 function App() {
-  // Countdown logic
   const [timer, setTimer] = useState({
-    weeks: 0,
     days: 0,
     hours: 0,
     minutes: 0,
@@ -18,59 +16,60 @@ function App() {
 
   useEffect(() => {
     function updateCountdown() {
-      const targetDate = new Date("2027-06-25T00:00:00").getTime();
-      const now = new Date().getTime();
-      const distance = targetDate - now;
+      const targetDate = new Date("2025-12-20T00:00:00");
+      const now = new Date();
+      const distance = targetDate.getTime() - now.getTime();
+
+      if (distance <= 0) {
+        setTimer({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        });
+        return;
+      }
+
       const seconds = Math.floor((distance / 1000) % 60);
       const minutes = Math.floor((distance / 1000 / 60) % 60);
       const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      const daysTotal = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const weeks = Math.floor(daysTotal / 7);
-      const days = daysTotal % 7;
-      setTimer({ weeks, days, hours, minutes, seconds });
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+      setTimer({ days, hours, minutes, seconds });
     }
+
     const interval = setInterval(updateCountdown, 1000);
     updateCountdown();
     return () => clearInterval(interval);
   }, []);
 
-  // Improved auto scroll gallery
   useEffect(() => {
     const gallery = galleryRef.current;
     if (!gallery) return;
-    function startScroll() {
-      if (scrollIntervalRef.current) return;
-      scrollIntervalRef.current = setInterval(() => {
-        if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth) {
-          gallery.scrollLeft = 0;
-        } else {
-          gallery.scrollLeft += 1;
-        }
-      }, 20);
-    }
-    function stopScroll() {
-      if (scrollIntervalRef.current) {
-        clearInterval(scrollIntervalRef.current);
-        scrollIntervalRef.current = null;
-      }
-    }
-    if (!isGalleryHovered && !isVideoPlaying) {
-      startScroll();
-    } else {
-      stopScroll();
-    }
-    return stopScroll;
-  }, [isGalleryHovered, isVideoPlaying]);
 
-  // Popup wish
+    let scrollAmount = 0;
+    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+
+    const interval = setInterval(() => {
+      if (scrollAmount >= maxScroll) {
+        scrollAmount = 0;
+        gallery.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scrollAmount += 1;
+        gallery.scrollBy({ left: 1, behavior: "smooth" });
+      }
+    }, 10);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const [showPopup, setShowPopup] = useState(false);
   const [wish, setWish] = useState("");
 
   return (
     <>
       <header>
-        {/* <h1>ขอเชิญร่วมงานแต่งงาน</h1>
-        <p>บ่าวสาว: สมชาย & สมหญิง</p> */}
+        <img src="img/logo-1.png" alt="logo" className="logo" />
       </header>
 
       <section className="section couple">
@@ -81,14 +80,16 @@ function App() {
         </div>
         <div className="couple-container">
           <div className="person">
-            <img src="/img/bride-placeholder.jpg" alt="Bride" />
+            <img src="img/bride.png" alt="Bride" />
             <div className="label">Bride</div>
             <div className="name">นางสาว จิรวรรณ เพชรสุข</div>
+            <div className="name">(แป้ง)</div>
           </div>
           <div className="person">
-            <img src="/img/groom-placeholder.jpg" alt="Groom" />
+            <img src="img/groom.png" alt="Groom" />
             <div className="label">Groom</div>
             <div className="name">นาย จิรายุ สายสุวรรณ</div>
+            <div className="name">(ก้อง)</div>
           </div>
         </div>
       </section>
@@ -101,10 +102,6 @@ function App() {
         </h2>
         <div className="countdown-date">20 DEC 25</div>
         <div className="timer">
-          <div>
-            <span>{timer.weeks}</span>
-            <span>WEEKS</span>
-          </div>
           <div>
             <span>{timer.days}</span>
             <span>DAYS</span>
@@ -124,7 +121,12 @@ function App() {
         </div>
         <button
           className="calendar-btn"
-          onClick={() => alert("เพิ่มลงปฏิทินสำเร็จ!")}
+          onClick={() =>
+            window.open(
+              "https://calendar.google.com/calendar/render?action=TEMPLATE&text=งานแต่งงาน+จิรายุ+&dates=20270624T170000Z/20270625T070000Z&details=ขอเชิญร่วมงานแต่งงานของเราที่กรุงเทพฯ&location=กะทิบ้านอาหารไทย",
+              "_blank"
+            )
+          }
         >
           ADD TO CALENDAR
         </button>
@@ -147,41 +149,54 @@ function App() {
       <section className="gallery-section">
         <h2>Gallery</h2>
         <div>
-          {/* Video: use video tag instead of iframe for mp4 */}
-          <video
-            width="100%"
+          <iframe
+            width="560"
             height="315"
-            controls
-            ref={videoRef}
-            onPlay={() => setIsVideoPlaying(true)}
-            onPause={() => setIsVideoPlaying(false)}
-            onEnded={() => setIsVideoPlaying(false)}
-            poster="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471255/anime_vjtuej.jpg"
-            preload="metadata"
-          >
-            <source
-              src="https://drive.google.com/uc?export=download&id=1poj0ww-uhDtM0dTkyP24JBmq_k8SsMy9"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
+            src="https://www.youtube.com/embed/AR3vQpwamug?si=Xjn5p7AnN5JvI5Wj"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </div>
-        <div
-          className="gallery-images"
-          ref={galleryRef}
-          id="gallery"
-          onMouseEnter={() => setIsGalleryHovered(true)}
-          onMouseLeave={() => setIsGalleryHovered(false)}
-        >
-          <img src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471543/IMG_0125_mgrg68.jpg" alt="Gallery Image 1" />
-          <img src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471256/IMG_0126_mlevgc.jpg" alt="Gallery Image 2" />
-          <img src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471252/IMG_0127_a417wo.jpg" alt="Gallery Image 3" />
-          <img src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471255/IMG_0121_qekwgf.jpg" alt="Gallery Image 4" />
-          <img src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471249/IMG_0131_qx5aik.jpg" alt="Gallery Image 5" />
-          <img src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471252/IMG_1387_ko7r80.jpg" alt="Gallery Image 6" />
-          <img src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471541/IMG_0660_tpepm6.jpg" alt="Gallery Image 7" />
-          <img src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471251/IMG_0133_jo0sky.jpg" alt="Gallery Image 8" />
-          <img src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471257/IMG_0132_2_dlm7nb.jpg" alt="Gallery Image 9" />
+        <div className="gallery-images" ref={galleryRef}>
+          <img
+            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471543/IMG_0125_mgrg68.jpg"
+            alt="Gallery Image 1"
+          />
+          <img
+            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471256/IMG_0126_mlevgc.jpg"
+            alt="Gallery Image 2"
+          />
+          <img
+            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471252/IMG_0127_a417wo.jpg"
+            alt="Gallery Image 3"
+          />
+          <img
+            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471255/IMG_0121_qekwgf.jpg"
+            alt="Gallery Image 4"
+          />
+          <img
+            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471249/IMG_0131_qx5aik.jpg"
+            alt="Gallery Image 5"
+          />
+          <img
+            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471252/IMG_1387_ko7r80.jpg"
+            alt="Gallery Image 6"
+          />
+          <img
+            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471541/IMG_0660_tpepm6.jpg"
+            alt="Gallery Image 7"
+          />
+          <img
+            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471251/IMG_0133_jo0sky.jpg"
+            alt="Gallery Image 8"
+          />
+          <img
+            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471257/IMG_0132_2_dlm7nb.jpg"
+            alt="Gallery Image 9"
+          />
         </div>
       </section>
 
@@ -205,7 +220,10 @@ function App() {
           </button>
         </div>
         <div className="rsvp-img">
-          <img src="/img/rsvp-photo.jpg" alt="RSVP Couple Photo" />
+          <img
+            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471543/IMG_0125_mgrg68.jpg"
+            alt="RSVP Couple Photo"
+          />
         </div>
       </section>
 
@@ -249,22 +267,21 @@ function App() {
       )}
 
       <section className="map-section">
-        <h3>📍 The Venue</h3>
-        <p>The Peninsula Bangkok Resort</p>
+        <h3>📍 กะทิบ้านอาหารไทยและขนม</h3>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.7998694764644!2d100.5090275153609!3d13.719147401417768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e299427c44a97f%3A0xdff8e395ccae13df!2sThe%20Peninsula%20Bangkok!5e0!3m2!1sen!2sth!4v1650278615741!5m2!1sen!2sth"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.214413321803!2d100.44724769999999!3d13.782286599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e299a6443567b5%3A0xa22e91c6139854ad!2z4LiB4Liw4LiX4Li04Lia4LmJ4Liy4LiZ4Lit4Liy4Lir4Liy4Lij4LmE4LiX4Lii4LmB4Lil4Liw4LiC4LiZ4Lih!5e1!3m2!1sth!2snz!4v1752480097631!5m2!1sth!2snz"
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           title="Google Map"
         ></iframe>
         <div className="map-address">
-          📌 333 Charoen Nakhon Rd, Khlong Ton Sai, Khlong San, Bangkok 10600
+          📌 14 ถ. บรมราชชนนี ฉิมพลี เขตตลิ่งชัน กรุงเทพมหานคร 10170 ไทย
         </div>
         <button
           className="map-button"
           onClick={() =>
-            window.open("https://goo.gl/maps/2UfiCFPvR3qKoNML6", "_blank")
+            window.open("https://goo.gl/maps/s78Zu95dt7T4S8s57", "_blank")
           }
         >
           DIRECTION

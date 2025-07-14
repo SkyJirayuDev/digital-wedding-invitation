@@ -1,6 +1,6 @@
 /* Wedding Invitation: use Google Fonts for Sarabun and Dancing Script */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500&display=swap");
 
 /* Wedding Invitation Styles (migrated from HTML) */
 :root {
@@ -15,22 +15,42 @@ body {
   background-color: var(--main-bg);
   color: var(--text-color);
 }
+@keyframes bounceInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%) scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(20%) scale(1.05);
+  }
+  80% {
+    transform: translateY(-10%) scale(0.97);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
 header {
+  position: relative;
   text-align: center;
-  padding: 2rem 1rem;
   background-image: url("https://res.cloudinary.com/dslqqqxil/image/upload/v1752471257/IMG_0132_2_dlm7nb.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
-header h1 {
-  font-size: 2rem;
-  color: var(--gold);
+header .logo {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 400px;
+  height: auto;
+  object-fit: contain;
+  z-index: 10;
+  opacity: 0.95;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.5));
+  animation: bounceInTop 1.2s ease-out forwards;
 }
 .section {
   padding: 2rem 1rem;
@@ -42,7 +62,6 @@ header h1 {
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 video {
   width: 100% !important;
   height: 315px !important;
@@ -55,32 +74,32 @@ video {
   background: white;
 }
 .couple-title {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 1.5rem;
 }
 .couple-container {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
   flex-wrap: wrap;
 }
 .person {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 140px;
+  width: 200px;
 }
 .person img {
-  width: 120px;
-  height: 120px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 50%;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .person .label {
   font-family: "Dancing Script", cursive;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-top: 0.8rem;
 }
 .person .name {
@@ -90,17 +109,20 @@ video {
 .countdown {
   background-color: white;
   text-align: center;
-  padding: 3rem 1rem 2rem;
+  padding: 2rem 1rem;
 }
 .countdown h2 {
-  font-size: 1.1rem;
-  font-weight: 400;
+  font-size: 1.5rem;
+  font-weight: 500;
   margin-bottom: 0.5rem;
 }
 .countdown-date {
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin: 1rem 0;
+  color: rgba(254, 169, 94, 0.95);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25),
+               0 2px 6px rgba(0, 0, 0, 0.15);
 }
 .timer {
   display: flex;
@@ -114,11 +136,12 @@ video {
 }
 .timer span {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: normal;
   margin-top: 0.2rem;
 }
 .calendar-btn {
+  color: #333;
   margin-top: 1.5rem;
   padding: 0.5rem 1.5rem;
   border: 1px solid #333;
@@ -144,7 +167,6 @@ video {
   max-width: 100%;
   height: 240px;
   border-radius: 12px;
-  margin-bottom: 1.5rem;
 }
 .gallery-section {
   padding: 2rem 1rem;
@@ -209,6 +231,7 @@ video {
   margin-bottom: 1rem;
 }
 .rsvp-text button {
+  color: #333;
   padding: 0.6rem 1.5rem;
   border: 1px solid #333;
   border-radius: 999px;
@@ -225,7 +248,7 @@ video {
   text-align: center;
 }
 .rsvp-img img {
-  height: 240px;
+  height: 540px;
   max-width: 100%;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -241,8 +264,8 @@ video {
   padding: 2rem 1rem;
 }
 .map-section h3 {
-  font-size: 1rem;
-  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 .map-section p {
   margin-top: 0;
@@ -266,6 +289,7 @@ video {
   margin-top: 1rem;
 }
 .map-button {
+  color: #333;
   margin-top: 1rem;
   padding: 0.5rem 1.5rem;
   border: 1px solid #333;
@@ -274,6 +298,7 @@ video {
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease;
+  margin-bottom: 2.5rem;
 }
 .map-button:hover {
   background-color: #eee;
@@ -284,7 +309,8 @@ video {
   background: #fff;
 }
 .wish-section h2 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
   letter-spacing: 0.2rem;
 }
 .wish-section p {
@@ -293,6 +319,7 @@ video {
   font-style: italic;
 }
 .wish-section button {
+  color: #333;
   padding: 0.7rem 1.5rem;
   border: 2px solid #333;
   border-radius: 999px;
