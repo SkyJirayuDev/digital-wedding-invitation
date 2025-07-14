@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
+// 👇 เพิ่ม base ให้ตรงกับชื่อ repo
 export default defineConfig({
+  base: '/digital-wedding-invitation/',
   plugins: [react()],
 })
