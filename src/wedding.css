@@ -221,6 +221,8 @@ video {
   margin-top: 1rem;
 }
 .rsvp-section {
+  border: 5px solid red;
+  margin: 2rem;
   padding: 2rem 1rem;
   display: flex;
   flex-wrap: wrap;
@@ -319,6 +321,8 @@ video {
   background-color: #eee;
 }
 .wish-section {
+  border: 5px solid red;
+  margin: 2rem;
   text-align: center;
   padding: 3rem 1rem;
   background: #fff;

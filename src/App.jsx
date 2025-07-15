@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./wedding.css";
 import GallerySlider from "./components/GallerySlider";
+import { color } from "@cloudinary/url-gen/qualifiers/background";
 
 /* Gallery images */
 const galleryImgs = [
@@ -16,7 +17,67 @@ const galleryImgs = [
 ];
 
 export default function App() {
-  /* Countdown */
+  const audioRef = useRef(null);
+  const playerRef = useRef(null);
+
+  // YouTube API integration
+  useEffect(() => {
+    function createPlayer() {
+      playerRef.current = new window.YT.Player("youtube-player", {
+        height: "315",
+        width: "560",
+        videoId: "AR3vQpwamug",
+        playerVars: {
+          autoplay: 0,
+          mute: 1,
+          controls: 1,
+          modestbranding: 1, 
+          rel: 0, // Disable related videos
+          loop: 1, // Loop the video
+          playlist: "AR3vQpwamug", // Loop the same video
+        },
+        events: {
+          onReady: (event) => {
+            const iframe = event.target.getIframe();
+            iframe.addEventListener("click", () => {
+              try {
+                audioRef.current.play();
+              } catch (err) {
+                console.warn("Audio blocked on click:", err);
+              }
+            });
+          },
+          onStateChange: onPlayerStateChange,
+        },
+      });
+    }
+
+    function onPlayerStateChange(event) {
+      if (event.data === window.YT.PlayerState.PLAYING) {
+        if (audioRef.current.paused) {
+          try {
+            audioRef.current.play();
+          } catch (err) {
+            console.warn("Audio blocked:", err);
+          }
+        }
+      } else if (
+        event.data === window.YT.PlayerState.PAUSED ||
+        event.data === window.YT.PlayerState.ENDED
+      ) {
+        audioRef.current.pause();
+      }
+    }
+    if (window.YT && window.YT.Player) {
+      createPlayer();
+    } else {
+      window.onYouTubeIframeAPIReady = () => {
+        createPlayer();
+      };
+    }
+  }, []);
+
+  // Countdown
   const [timer, setTimer] = useState({
     days: 0,
     hours: 0,
@@ -42,7 +103,7 @@ export default function App() {
     return () => clearInterval(id);
   }, []);
 
-  /* Wish popup */
+  // Wish popup
   const [wish, setWish] = useState("");
   const [showPopup, setShowPopup] = useState(false);
 
@@ -140,19 +201,22 @@ export default function App() {
         <h2>GALLERY</h2>
 
         <div className="video-wrapper">
-          <iframe
-            src="https://www.youtube.com/embed/AR3vQpwamug?si=Xjn5p7AnN5JvI5Wj"
-            title="YouTube player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          />
+          <div
+            id="youtube-player"
+            style={{
+              width: "100%",
+              aspectRatio: "16 / 9",
+              maxWidth: "560px",
+              margin: "0 auto",
+            }}
+          ></div>
         </div>
 
         <GallerySlider images={galleryImgs} />
       </section>
 
       {/* RSVP */}
+      <h1 style={{ color: "red", textAlign: "center" }}>ยังไม่เสร็จจ้าอายตูดดดดด!</h1>
       <section className="rsvp-section">
         <div className="rsvp-text">
           <h2>R.S.V.P</h2>
@@ -252,6 +316,8 @@ export default function App() {
         <a href="#gallery">อัลบัม</a>
         <a href="#map">แผนที่</a>
       </nav>
+
+      <audio ref={audioRef} src="/digital-wedding-invitation/music/perfect.mp3" loop />
     </>
   );
 }
