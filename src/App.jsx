@@ -1,70 +1,42 @@
 import { useEffect, useRef, useState } from "react";
 import "./wedding.css";
+import GallerySlider from "./components/GallerySlider";
 
-function App() {
-  const [timer, setTimer] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-  const galleryRef = useRef(null);
-  const videoRef = useRef(null);
-  const scrollIntervalRef = useRef(null);
-  const [isGalleryHovered, setIsGalleryHovered] = useState(false);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+const galleryImgs = [
+  "https://res.cloudinary.com/dslqqqxil/image/upload/v1752471543/IMG_0125_mgrg68.jpg",
+  "https://res.cloudinary.com/dslqqqxil/image/upload/v1752471256/IMG_0126_mlevgc.jpg",
+  "https://res.cloudinary.com/dslqqqxil/image/upload/v1752471252/IMG_0127_a417wo.jpg",
+  "https://res.cloudinary.com/dslqqqxil/image/upload/v1752471255/IMG_0121_qekwgf.jpg",
+  "https://res.cloudinary.com/dslqqqxil/image/upload/v1752471249/IMG_0131_qx5aik.jpg",
+  "https://res.cloudinary.com/dslqqqxil/image/upload/v1752471252/IMG_1387_ko7r80.jpg",
+  "https://res.cloudinary.com/dslqqqxil/image/upload/v1752471541/IMG_0660_tpepm6.jpg",
+  "https://res.cloudinary.com/dslqqqxil/image/upload/v1752471251/IMG_0133_jo0sky.jpg",
+  "https://res.cloudinary.com/dslqqqxil/image/upload/v1752471257/IMG_0132_2_dlm7nb.jpg",
+];
+
+export default function App() {
+  const [timer, setTimer] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
-    function updateCountdown() {
-      const targetDate = new Date("2025-12-20T00:00:00");
+    const target = new Date("2025-12-20T00:00:00");
+    const tick = () => {
       const now = new Date();
-      const distance = targetDate.getTime() - now.getTime();
-
-      if (distance <= 0) {
-        setTimer({
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-        });
-        return;
-      }
-
-      const seconds = Math.floor((distance / 1000) % 60);
-      const minutes = Math.floor((distance / 1000 / 60) % 60);
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-
-      setTimer({ days, hours, minutes, seconds });
-    }
-
-    const interval = setInterval(updateCountdown, 1000);
-    updateCountdown();
-    return () => clearInterval(interval);
+      const diff = target - now;
+      if (diff <= 0) return setTimer({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      setTimer({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((diff / (1000 * 60)) % 60),
+        seconds: Math.floor((diff / 1000) % 60),
+      });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
   }, []);
 
-  useEffect(() => {
-    const gallery = galleryRef.current;
-    if (!gallery) return;
-
-    let scrollAmount = 0;
-    const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-
-    const interval = setInterval(() => {
-      if (scrollAmount >= maxScroll) {
-        scrollAmount = 0;
-        gallery.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        scrollAmount += 1;
-        gallery.scrollBy({ left: 1, behavior: "smooth" });
-      }
-    }, 10);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const [showPopup, setShowPopup] = useState(false);
   const [wish, setWish] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
   return (
     <>
@@ -136,12 +108,12 @@ function App() {
         <h2>SCHEDULE</h2>
         <img
           src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471249/IMG_0131_qx5aik.jpg"
-          alt="Wedding Image"
+          alt="Wedding"
           className="wedding-img"
         />
         <img
           src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752492697/schedule-final_tf2vmu.png"
-          alt="Schedule Image"
+          alt="Schedule"
           className="schedule-img"
         />
       </section>
@@ -151,51 +123,14 @@ function App() {
         <div className="video-wrapper">
           <iframe
             src="https://www.youtube.com/embed/AR3vQpwamug?si=Xjn5p7AnN5JvI5Wj"
-            title="YouTube video player"
+            title="YouTube player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-          ></iframe>
-        </div>
-        <div className="gallery-images" ref={galleryRef}>
-          <img
-            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471543/IMG_0125_mgrg68.jpg"
-            alt="Gallery Image 1"
-          />
-          <img
-            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471256/IMG_0126_mlevgc.jpg"
-            alt="Gallery Image 2"
-          />
-          <img
-            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471252/IMG_0127_a417wo.jpg"
-            alt="Gallery Image 3"
-          />
-          <img
-            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471255/IMG_0121_qekwgf.jpg"
-            alt="Gallery Image 4"
-          />
-          <img
-            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471249/IMG_0131_qx5aik.jpg"
-            alt="Gallery Image 5"
-          />
-          <img
-            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471252/IMG_1387_ko7r80.jpg"
-            alt="Gallery Image 6"
-          />
-          <img
-            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471541/IMG_0660_tpepm6.jpg"
-            alt="Gallery Image 7"
-          />
-          <img
-            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471251/IMG_0133_jo0sky.jpg"
-            alt="Gallery Image 8"
-          />
-          <img
-            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471257/IMG_0132_2_dlm7nb.jpg"
-            alt="Gallery Image 9"
           />
         </div>
+        <GallerySlider images={galleryImgs} />
       </section>
 
       <section className="rsvp-section">
@@ -300,4 +235,4 @@ function App() {
   );
 }
 
-export default App;
+
