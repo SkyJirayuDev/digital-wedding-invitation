@@ -26,7 +26,7 @@ export default function App() {
       playerRef.current = new window.YT.Player("youtube-player", {
         height: "315",
         width: "560",
-        videoId: "AR3vQpwamug",
+        videoId: "W03TIloQ2lY",
         playerVars: {
           autoplay: 0,
           mute: 1,
@@ -34,7 +34,7 @@ export default function App() {
           modestbranding: 1, 
           rel: 0, // Disable related videos
           loop: 1, // Loop the video
-          playlist: "AR3vQpwamug", // Loop the same video
+          playlist: "W03TIloQ2lY", // Loop the same video
         },
         events: {
           onReady: (event) => {
