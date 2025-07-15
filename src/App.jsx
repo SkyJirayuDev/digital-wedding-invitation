@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./wedding.css";
 import GallerySlider from "./components/GallerySlider";
 
+/* Gallery images */
 const galleryImgs = [
   "https://res.cloudinary.com/dslqqqxil/image/upload/v1752471543/IMG_0125_mgrg68.jpg",
   "https://res.cloudinary.com/dslqqqxil/image/upload/v1752471256/IMG_0126_mlevgc.jpg",
@@ -15,14 +16,20 @@ const galleryImgs = [
 ];
 
 export default function App() {
-  const [timer, setTimer] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  /* Countdown */
+  const [timer, setTimer] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
     const target = new Date("2025-12-20T00:00:00");
     const tick = () => {
-      const now = new Date();
-      const diff = target - now;
-      if (diff <= 0) return setTimer({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      const diff = target - new Date();
+      if (diff <= 0)
+        return setTimer({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       setTimer({
         days: Math.floor(diff / (1000 * 60 * 60 * 24)),
         hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
@@ -35,21 +42,25 @@ export default function App() {
     return () => clearInterval(id);
   }, []);
 
+  /* Wish popup */
   const [wish, setWish] = useState("");
   const [showPopup, setShowPopup] = useState(false);
 
   return (
     <>
-      <header>
+      {/* HERO */}
+      <header id="hero">
         <img src="img/logo-1.png" alt="logo" className="logo" />
       </header>
 
+      {/* COUPLE */}
       <section className="section couple">
         <div className="couple-title">
           THE HONOUR OF YOUR PRESENCE IS REQUESTED
           <br />
           AT THE MARRIAGE CELEBRATION OF
         </div>
+
         <div className="couple-container">
           <div className="person">
             <img src="img/bride.png" alt="Bride" />
@@ -57,6 +68,7 @@ export default function App() {
             <div className="name">นางสาว จิรวรรณ เพชรสุข</div>
             <div className="name">(แป้ง)</div>
           </div>
+
           <div className="person">
             <img src="img/groom.png" alt="Groom" />
             <div className="label">Groom</div>
@@ -66,13 +78,16 @@ export default function App() {
         </div>
       </section>
 
+      {/* COUNTDOWN */}
       <section className="countdown">
         <h2>
           LET’S CELEBRATE TOGETHER ON
           <br />
           OUR SPECIAL DAY ON
         </h2>
+
         <div className="countdown-date">20 DEC 25</div>
+
         <div className="timer">
           <div>
             <span>{timer.days}</span>
@@ -91,6 +106,7 @@ export default function App() {
             <span>SEC</span>
           </div>
         </div>
+
         <button
           className="calendar-btn"
           onClick={() =>
@@ -104,7 +120,8 @@ export default function App() {
         </button>
       </section>
 
-      <section className="schedule-section">
+      {/* SCHEDULE */}
+      <section id="details" className="schedule-section">
         <h2>SCHEDULE</h2>
         <img
           src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471249/IMG_0131_qx5aik.jpg"
@@ -118,21 +135,24 @@ export default function App() {
         />
       </section>
 
-      <section className="gallery-section">
+      {/* GALLERY */}
+      <section id="gallery" className="gallery-section">
         <h2>GALLERY</h2>
+
         <div className="video-wrapper">
           <iframe
             src="https://www.youtube.com/embed/AR3vQpwamug?si=Xjn5p7AnN5JvI5Wj"
             title="YouTube player"
-            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
         </div>
+
         <GallerySlider images={galleryImgs} />
       </section>
 
+      {/* RSVP */}
       <section className="rsvp-section">
         <div className="rsvp-text">
           <h2>R.S.V.P</h2>
@@ -144,6 +164,7 @@ export default function App() {
           <p>
             <strong>HOPE TO SEE YOU AT OUR WEDDING</strong>
           </p>
+
           <button
             onClick={() =>
               (window.location.href = "https://example.com/register")
@@ -152,14 +173,16 @@ export default function App() {
             กดเพื่อลงทะเบียนเข้าร่วมงาน
           </button>
         </div>
+
         <div className="rsvp-img">
           <img
             src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471543/IMG_0125_mgrg68.jpg"
-            alt="RSVP Couple Photo"
+            alt="RSVP Couple"
           />
         </div>
       </section>
 
+      {/* WISH */}
       <section className="wish-section">
         <h2>SEND YOUR WISH</h2>
         <p>
@@ -167,6 +190,7 @@ export default function App() {
           <br />
           ร่วมอวยพรให้เราทั้งคู่ได้ที่นี่
         </p>
+
         <button onClick={() => setShowPopup(true)}>
           ✏️ เขียนคำอวยพรดิจิตอล
         </button>
@@ -181,7 +205,6 @@ export default function App() {
               value={wish}
               onChange={(e) => setWish(e.target.value)}
             />
-            <br />
             <button
               className="submit"
               onClick={() => {
@@ -199,7 +222,8 @@ export default function App() {
         </div>
       )}
 
-      <section className="map-section">
+      {/* MAP */}
+      <section id="map" className="map-section">
         <h3>📍 กะทิบ้านอาหารไทยและขนม</h3>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.214413321803!2d100.44724769999999!3d13.782286599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e299a6443567b5%3A0xa22e91c6139854ad!2z4LiB4Liw4LiX4Li04Lia4LmJ4Liy4LiZ4Lit4Liy4Lir4Liy4Lij4LmE4LiX4Lii4LmB4Lil4Liw4LiC4LiZ4Lih!5e1!3m2!1sth!2snz!4v1752480097631!5m2!1sth!2snz"
@@ -214,25 +238,20 @@ export default function App() {
         <button
           className="map-button"
           onClick={() =>
-            window.open(
-              "https://maps.app.goo.gl/2kj2jUnsaui2b3er7",
-              "_blank",
-              "noopener,noreferrer"
-            )
+            window.open("https://maps.app.goo.gl/2kj2jUnsaui2b3er7", "_blank")
           }
         >
           DIRECTION
         </button>
       </section>
 
+      {/* NAV */}
       <nav className="nav-bottom">
-        <a href="#">หน้าหลัก</a>
-        <a href="#">รายละเอียด</a>
-        <a href="#">แผนที่</a>
-        <a href="#">อวยพร</a>
+        <a href="#hero">หน้าหลัก</a>
+        <a href="#details">รายละเอียด</a>
+        <a href="#gallery">อัลบัม</a>
+        <a href="#map">แผนที่</a>
       </nav>
     </>
   );
 }
-
-

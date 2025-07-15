@@ -2,7 +2,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
-export default function GallerySlider({ images }) {
+// GallerySlider component to display a slider of images
+export default function GallerySlider({ images = [] }) {
   return (
     <Swiper
       modules={[Autoplay]}
@@ -11,17 +12,12 @@ export default function GallerySlider({ images }) {
       loop
       freeMode
       autoplay={{ delay: 0, disableOnInteraction: false }}
-      speed={6000}                    
+      speed={6000}
       className="gallery-slider"
     >
       {images.map((src, idx) => (
-        <SwiperSlide key={idx} style={{ width: "240px" }}>
-          <img
-            src={src}
-            alt={`Gallery ${idx + 1}`}
-            loading="lazy"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
+        <SwiperSlide key={idx}>
+          <img src={src} alt={`Gallery ${idx + 1}`} loading="lazy" />
         </SwiperSlide>
       ))}
     </Swiper>
