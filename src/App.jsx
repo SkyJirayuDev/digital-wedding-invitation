@@ -17,7 +17,9 @@ const galleryImgs = [
   "https://res.cloudinary.com/dslqqqxil/image/upload/v1754144094/IMG_4936_krjeu0.jpg",
   "https://res.cloudinary.com/dslqqqxil/image/upload/v1754144094/IMG_5089_tgldpj.jpg",
   "https://res.cloudinary.com/dslqqqxil/image/upload/v1754144095/IMG_5088_uzrs49.jpg",
-  "https://res.cloudinary.com/dslqqqxil/image/upload/v1754144102/IMG_9279_3_rhabee.jpg",
+  "https://res.cloudinary.com/dslqqqxil/image/upload/v1754144829/IMG_9279_3_rhabee.jpg",
+  "https://res.cloudinary.com/dslqqqxil/image/upload/v1754145452/IMG_5074_yjxvrm.jpg",
+  "https://res.cloudinary.com/dslqqqxil/image/upload/v1754145453/IMG_5123_murlda.jpg"
 ];
 
 export default function App() {
