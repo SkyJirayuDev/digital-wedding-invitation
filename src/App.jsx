@@ -31,7 +31,7 @@ export default function App() {
           autoplay: 0,
           mute: 1,
           controls: 1,
-          modestbranding: 1, 
+          modestbranding: 1,
           rel: 0, // Disable related videos
           loop: 1, // Loop the video
           playlist: "W03TIloQ2lY", // Loop the same video
@@ -109,182 +109,121 @@ export default function App() {
 
   return (
     <>
-      {/* HERO */}
-      <header id="hero">
-        <img src="img/logo-1.png" alt="logo" className="logo" />
-      </header>
+        {/* HERO */}
+        <header id="hero">
+          <img src="img/logo-1.png" alt="logo" className="logo" />
+        </header>
 
-      {/* COUPLE */}
-      <section className="section couple">
-        <div className="couple-title">
-          THE HONOUR OF YOUR PRESENCE IS REQUESTED
-          <br />
-          AT THE MARRIAGE CELEBRATION OF
-        </div>
-
-        <div className="couple-container">
-          <div className="person">
-            <img src="img/bride.png" alt="Bride" />
-            <div className="label">Bride</div>
-            <div className="name">นางสาว จิรวรรณ เพชรสุข</div>
-            <div className="name">(แป้ง)</div>
+        {/* COUPLE */}
+        <section className="section couple">
+          <div className="couple-title">
+            THE HONOUR OF YOUR PRESENCE IS REQUESTED
+            <br />
+            AT THE MARRIAGE CELEBRATION OF
           </div>
 
-          <div className="person">
-            <img src="img/groom.png" alt="Groom" />
-            <div className="label">Groom</div>
-            <div className="name">นาย จิรายุ สายสุวรรณ</div>
-            <div className="name">(ก้อง)</div>
+          <div className="couple-container">
+            <div className="person">
+              <img src="img/bride.png" alt="Bride" />
+              <div className="label">Bride</div>
+              <div className="name">นางสาว จิรวรรณ เพชรสุข</div>
+              <div className="name">(แป้ง)</div>
+            </div>
+
+            <div className="person">
+              <img src="img/groom.png" alt="Groom" />
+              <div className="label">Groom</div>
+              <div className="name">นาย จิรายุ สายสุวรรณ</div>
+              <div className="name">(ก้อง)</div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* COUNTDOWN */}
-      <section className="countdown">
-        <h2>
-          LET’S CELEBRATE TOGETHER ON
-          <br />
-          OUR SPECIAL DAY ON
-        </h2>
+        {/* COUNTDOWN */}
+        <section className="countdown">
+          <h2>
+            LET’S CELEBRATE TOGETHER ON
+            <br />
+            OUR SPECIAL DAY ON
+          </h2>
 
-        <div className="countdown-date">20 DEC 25</div>
+          <div className="countdown-date">20 DEC 25</div>
 
-        <div className="timer">
-          <div>
-            <span>{timer.days}</span>
-            <span>DAYS</span>
+          <div className="timer">
+            <div>
+              <span>{timer.days}</span>
+              <span>DAYS</span>
+            </div>
+            <div>
+              <span>{timer.hours}</span>
+              <span>HOURS</span>
+            </div>
+            <div>
+              <span>{timer.minutes}</span>
+              <span>MIN</span>
+            </div>
+            <div>
+              <span>{timer.seconds}</span>
+              <span>SEC</span>
+            </div>
           </div>
-          <div>
-            <span>{timer.hours}</span>
-            <span>HOURS</span>
-          </div>
-          <div>
-            <span>{timer.minutes}</span>
-            <span>MIN</span>
-          </div>
-          <div>
-            <span>{timer.seconds}</span>
-            <span>SEC</span>
-          </div>
-        </div>
-
-        <button
-          className="calendar-btn"
-          onClick={() =>
-            window.open(
-              "https://calendar.google.com/calendar/render?action=TEMPLATE&text=งานแต่งงาน+จิรายุ+&dates=20270624T170000Z/20270625T070000Z&details=ขอเชิญร่วมงานแต่งงานของเราที่กรุงเทพฯ&location=กะทิบ้านอาหารไทย",
-              "_blank"
-            )
-          }
-        >
-          ADD TO CALENDAR
-        </button>
-      </section>
-
-      {/* SCHEDULE */}
-      <section id="details" className="schedule-section">
-        <h2>SCHEDULE</h2>
-        <img
-          src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471249/IMG_0131_qx5aik.jpg"
-          alt="Wedding"
-          className="wedding-img"
-        />
-        <img
-          src="img/savetheday.png"
-          alt="Schedule"
-          className="schedule-img"
-        />
-      </section>
-
-      {/* GALLERY */}
-      <section id="gallery" className="gallery-section">
-        <h2>GALLERY</h2>
-
-        <div className="video-wrapper">
-          <div
-            id="youtube-player"
-            style={{
-              width: "100%",
-              aspectRatio: "16 / 9",
-              maxWidth: "560px",
-              margin: "0 auto",
-            }}
-          ></div>
-        </div>
-
-        <GallerySlider images={galleryImgs} />
-      </section>
-
-      {/* RSVP */}
-      <h1 style={{ color: "red", textAlign: "center" }}>ยังไม่เสร็จจ้าอายตูดดดดด!</h1>
-      <section className="rsvp-section">
-        <div className="rsvp-text">
-          <h2>R.S.V.P</h2>
-          <p>
-            “เพื่อให้เราสามารถวางแผนในการดูแลท่าน
-            ซึ่งเป็นแขกคนสำคัญได้อย่างเต็มที่
-            ขอรบกวนทุกท่านกรอกแบบตอบรับการเข้าร่วมงานให้เราด้วยนะคะ/ครับ”
-          </p>
-          <p>
-            <strong>HOPE TO SEE YOU AT OUR WEDDING</strong>
-          </p>
 
           <button
+            className="calendar-btn"
             onClick={() =>
-              (window.location.href = "https://example.com/register")
+              window.open(
+                "https://calendar.google.com/calendar/render?action=TEMPLATE&text=งานแต่งงาน+จิรายุ+&dates=20270624T170000Z/20270625T070000Z&details=ขอเชิญร่วมงานแต่งงานของเราที่กรุงเทพฯ&location=กะทิบ้านอาหารไทย",
+                "_blank"
+              )
             }
           >
-            กดเพื่อลงทะเบียนเข้าร่วมงาน
+            ADD TO CALENDAR
           </button>
-        </div>
+        </section>
 
-        <div className="rsvp-img">
+        {/* SCHEDULE */}
+        <section id="details" className="schedule-section">
+          <h2>SCHEDULE</h2>
           <img
-            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471543/IMG_0125_mgrg68.jpg"
-            alt="RSVP Couple"
+            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471249/IMG_0131_qx5aik.jpg"
+            alt="Wedding"
+            className="wedding-img"
           />
-        </div>
-      </section>
+          <img
+            src="img/savetheday.png"
+            alt="Schedule"
+            className="schedule-img"
+          />
+        </section>
 
-      {/* WISH */}
-      <section className="wish-section">
-        <h2>SEND YOUR WISH</h2>
-        <p>
-          เชิญทุกท่านมาร่วมเป็นส่วนหนึ่งในการเติมเต็มความสุขให้กับเรา
-          <br />
-          ร่วมอวยพรให้เราทั้งคู่ได้ที่นี่
-        </p>
+        {/* GALLERY */}
+        <section id="gallery" className="gallery-section">
+          <h2>GALLERY</h2>
 
-        <button onClick={() => setShowPopup(true)}>
-          ✏️ เขียนคำอวยพรดิจิตอล
-        </button>
-      </section>
-
-      {showPopup && (
-        <div className="popup" style={{ display: "flex" }}>
-          <div className="popup-content">
-            <h3>เขียนคำอวยพร</h3>
-            <textarea
-              placeholder="พิมพ์คำอวยพรของคุณที่นี่..."
-              value={wish}
-              onChange={(e) => setWish(e.target.value)}
-            />
-            <button
-              className="submit"
-              onClick={() => {
-                alert("ส่งคำอวยพรเรียบร้อยแล้ว ขอบคุณค่ะ/ครับ");
-                setShowPopup(false);
-                setWish("");
+          <div className="video-wrapper">
+            <div
+              id="youtube-player"
+              style={{
+                width: "100%",
+                aspectRatio: "16 / 9",
+                maxWidth: "560px",
+                margin: "0 auto",
               }}
-            >
-              ส่งคำอวยพร
-            </button>
-            <button className="cancel" onClick={() => setShowPopup(false)}>
-              ยกเลิก
-            </button>
+            ></div>
           </div>
-        </div>
-      )}
+
+          <GallerySlider images={galleryImgs} />
+        </section>
+
+      {/* Location */}
+      <section id="location" className="location-section">
+        <h2>LOCATION</h2>
+        <img
+            src="img/restaurant.jpg"
+            alt="restaurant"
+            className="location-img"
+          />
+      </section>
 
       {/* MAP */}
       <section id="map" className="map-section">
@@ -317,7 +256,11 @@ export default function App() {
         <a href="#map">แผนที่</a>
       </nav>
 
-      <audio ref={audioRef} src="/digital-wedding-invitation/music/perfect.mp3" loop />
+      <audio
+        ref={audioRef}
+        src="/digital-wedding-invitation/music/perfect.mp3"
+        loop
+      />
     </>
   );
 }
