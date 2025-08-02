@@ -190,7 +190,7 @@ export default function App() {
           className="wedding-img"
         />
         <img
-          src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752492697/schedule-final_tf2vmu.png"
+          src="img/savetheday.png"
           alt="Schedule"
           className="schedule-img"
         />
