@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import "./wedding.css";
 import GallerySlider from "./components/GallerySlider";
-import { color } from "@cloudinary/url-gen/qualifiers/background";
 
 /* Gallery images */
 const galleryImgs = [
@@ -108,10 +107,6 @@ export default function App() {
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
   }, []);
-
-  // Wish popup
-  const [wish, setWish] = useState("");
-  const [showPopup, setShowPopup] = useState(false);
 
   return (
     <>
@@ -259,7 +254,7 @@ export default function App() {
 
       <audio
         ref={audioRef}
-        src="/digital-wedding-invitation/music/perfect.mp3"
+        src="music/perfect.mp3"
         loop
       />
     </>
