@@ -19,7 +19,7 @@ const galleryImgs = [
   "https://res.cloudinary.com/dslqqqxil/image/upload/v1754144095/IMG_5088_uzrs49.jpg",
   "https://res.cloudinary.com/dslqqqxil/image/upload/v1754144829/IMG_9279_3_rhabee.jpg",
   "https://res.cloudinary.com/dslqqqxil/image/upload/v1754145452/IMG_5074_yjxvrm.jpg",
-  "https://res.cloudinary.com/dslqqqxil/image/upload/v1754145453/IMG_5123_murlda.jpg"
+  "https://res.cloudinary.com/dslqqqxil/image/upload/v1754145453/IMG_5123_murlda.jpg",
 ];
 
 export default function App() {
@@ -115,120 +115,116 @@ export default function App() {
 
   return (
     <>
-        {/* HERO */}
-        <header id="hero">
-          <img src="img/logo-1.png" alt="logo" className="logo" />
-        </header>
+      {/* HERO */}
+      <header id="hero">
+        <img src="img/logo-1.png" alt="logo" className="logo" />
+      </header>
 
-        {/* COUPLE */}
-        <section className="section couple">
-          <div className="couple-title">
-            THE HONOUR OF YOUR PRESENCE IS REQUESTED
-            <br />
-            AT THE MARRIAGE CELEBRATION OF
+      {/* COUPLE */}
+      <section className="section couple">
+        <div className="couple-title">
+          THE HONOUR OF YOUR PRESENCE IS REQUESTED
+          <br />
+          AT THE MARRIAGE CELEBRATION OF
+        </div>
+
+        <div className="couple-container">
+          <div className="person">
+            <img src="img/bride.png" alt="Bride" />
+            <div className="label">Bride</div>
+            <div className="name">นางสาว จิรวรรณ เพชรสุข</div>
+            <div className="name">(แป้ง)</div>
           </div>
 
-          <div className="couple-container">
-            <div className="person">
-              <img src="img/bride.png" alt="Bride" />
-              <div className="label">Bride</div>
-              <div className="name">นางสาว จิรวรรณ เพชรสุข</div>
-              <div className="name">(แป้ง)</div>
-            </div>
-
-            <div className="person">
-              <img src="img/groom.png" alt="Groom" />
-              <div className="label">Groom</div>
-              <div className="name">นาย จิรายุ สายสุวรรณ</div>
-              <div className="name">(ก้อง)</div>
-            </div>
+          <div className="person">
+            <img src="img/groom.png" alt="Groom" />
+            <div className="label">Groom</div>
+            <div className="name">นาย จิรายุ สายสุวรรณ</div>
+            <div className="name">(ก้อง)</div>
           </div>
-        </section>
+        </div>
+      </section>
+      <img
+        src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471249/IMG_0131_qx5aik.jpg"
+        alt="Wedding"
+        className="wedding-img"
+      />
 
-        {/* COUNTDOWN */}
-        <section className="countdown">
-          <h2>
-            LET’S CELEBRATE TOGETHER ON
-            <br />
-            OUR SPECIAL DAY ON
-          </h2>
+      {/* COUNTDOWN */}
+      <section className="countdown">
+        <h2>
+          LET’S CELEBRATE TOGETHER ON
+          <br />
+          OUR SPECIAL DAY ON
+        </h2>
+        <img src="img/wedding-date.png" alt="Wedding-date" className="wedding-img" />
 
-          <div className="countdown-date">20 DEC 25</div>
-
-          <div className="timer">
-            <div>
-              <span>{timer.days}</span>
-              <span>DAYS</span>
-            </div>
-            <div>
-              <span>{timer.hours}</span>
-              <span>HOURS</span>
-            </div>
-            <div>
-              <span>{timer.minutes}</span>
-              <span>MIN</span>
-            </div>
-            <div>
-              <span>{timer.seconds}</span>
-              <span>SEC</span>
-            </div>
+        <div className="timer">
+          <div>
+            <span>{timer.days}</span>
+            <span>DAYS</span>
           </div>
-
-          <button
-            className="calendar-btn"
-            onClick={() =>
-              window.open(
-                "https://calendar.google.com/calendar/render?action=TEMPLATE&text=งานแต่งงาน+จิรายุ+&dates=20270624T170000Z/20270625T070000Z&details=ขอเชิญร่วมงานแต่งงานของเราที่กรุงเทพฯ&location=กะทิบ้านอาหารไทย",
-                "_blank"
-              )
-            }
-          >
-            ADD TO CALENDAR
-          </button>
-        </section>
-
-        {/* SCHEDULE */}
-        <section id="details" className="schedule-section">
-          <h2>SCHEDULE</h2>
-          <img
-            src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471249/IMG_0131_qx5aik.jpg"
-            alt="Wedding"
-            className="wedding-img"
-          />
-          <img
-            src="img/savetheday.png"
-            alt="Schedule"
-            className="schedule-img"
-          />
-        </section>
-
-        {/* GALLERY */}
-        <section id="gallery" className="gallery-section">
-          <h2>GALLERY</h2>
-
-          <div className="video-wrapper">
-            <div
-              id="youtube-player"
-              style={{
-                width: "100%",
-                aspectRatio: "16 / 9",
-                maxWidth: "560px",
-                margin: "0 auto",
-              }}
-            ></div>
+          <div>
+            <span>{timer.hours}</span>
+            <span>HOURS</span>
           </div>
+          <div>
+            <span>{timer.minutes}</span>
+            <span>MIN</span>
+          </div>
+          <div>
+            <span>{timer.seconds}</span>
+            <span>SEC</span>
+          </div>
+        </div>
 
-          <GallerySlider images={galleryImgs} />
-        </section>
+        <button
+          className="calendar-btn"
+          onClick={() =>
+            window.open(
+              "https://calendar.google.com/calendar/render?action=TEMPLATE&text=งานแต่งงาน+จิรายุ+&dates=20270624T170000Z/20270625T070000Z&details=ขอเชิญร่วมงานแต่งงานของเราที่กรุงเทพฯ&location=กะทิบ้านอาหารไทย",
+              "_blank"
+            )
+          }
+        >
+          ADD TO CALENDAR
+        </button>
+      </section>
+
+      {/* SCHEDULE */}
+      <section id="details" className="schedule-section">
+        <h2>SCHEDULE</h2>
+        <img src="img/savetheday.png" alt="Schedule" className="schedule-img" />
+      </section>
+
+      {/* GALLERY */}
+      <section id="gallery" className="gallery-section">
+        <h2>GALLERY</h2>
+
+        <div className="video-wrapper">
+          <div
+            id="youtube-player"
+            style={{
+              width: "100%",
+              aspectRatio: "16 / 9",
+              maxWidth: "560px",
+              margin: "0 auto",
+            }}
+          ></div>
+        </div>
+
+        <GallerySlider images={galleryImgs} />
+      </section>
 
       {/* Location */}
       <section id="location" className="location-section">
         <h2>LOCATION</h2>
         <img
-            src="img/restaurant.jpg"
-            alt="restaurant"
-            className="location-img"
-          />
+          src="img/restaurant.jpg"
+          alt="restaurant"
+          className="location-img"
+        />
+        <img src="img/wedding-map.png" alt="Wedding-map" className="location-img" />
       </section>
 
       {/* MAP */}
