@@ -151,7 +151,7 @@ export default function App() {
       />
 
       {/* COUNTDOWN */}
-      <section className="countdown">
+      <section id="details" className="countdown">
         <h2>
           LET’S CELEBRATE TOGETHER ON
           <br />
@@ -192,7 +192,7 @@ export default function App() {
       </section>
 
       {/* SCHEDULE */}
-      <section id="details" className="schedule-section">
+      <section className="schedule-section">
         <h2>SCHEDULE</h2>
         <img src="img/savetheday.png" alt="Schedule" className="schedule-img" />
       </section>
@@ -217,8 +217,8 @@ export default function App() {
       </section>
 
       {/* Location */}
-      <section id="location" className="location-section">
-        <h2>LOCATION</h2>
+      <section id="map" className="location-section">
+        <h2>📍 LOCATION กะทิบ้านอาหารไทยและขนม</h2>
         <img
           src="img/restaurant.jpg"
           alt="restaurant"
@@ -228,8 +228,7 @@ export default function App() {
       </section>
 
       {/* MAP */}
-      <section id="map" className="map-section">
-        <h3>📍 กะทิบ้านอาหารไทยและขนม</h3>
+      <section className="map-section">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.214413321803!2d100.44724769999999!3d13.782286599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e299a6443567b5%3A0xa22e91c6139854ad!2z4LiB4Liw4LiX4Li04Lia4LmJ4Liy4LiZ4Lit4Liy4Lir4Liy4Lij4LmE4LiX4Lii4LmB4Lil4Liw4LiC4LiZ4Lih!5e1!3m2!1sth!2snz!4v1752480097631!5m2!1sth!2snz"
           allowFullScreen=""
