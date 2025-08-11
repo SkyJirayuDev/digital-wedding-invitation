@@ -213,7 +213,7 @@ export default function App() {
 
       {/* Location */}
       <section id="map" className="location-section">
-        <h2>📍 LOCATION กะทิบ้านอาหารไทยและขนม</h2>
+        <h2>LOCATION <br></br>📍 กะทิบ้านอาหารไทยและขนม</h2>
         <img
           src="img/restaurant.jpg"
           alt="restaurant"
