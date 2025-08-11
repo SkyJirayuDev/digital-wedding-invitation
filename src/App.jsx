@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import "./wedding.css";
 import GallerySlider from "./components/GallerySlider";
 
-/* Gallery images */
+// Gallery images
 const galleryImgs = [
   "https://res.cloudinary.com/dslqqqxil/image/upload/v1752471543/IMG_0125_mgrg68.jpg",
   "https://res.cloudinary.com/dslqqqxil/image/upload/v1752471256/IMG_0126_mlevgc.jpg",
@@ -57,6 +57,7 @@ export default function App() {
       });
     }
 
+    // Handle player state changes
     function onPlayerStateChange(event) {
       if (event.data === window.YT.PlayerState.PLAYING) {
         if (audioRef.current.paused) {
@@ -90,6 +91,7 @@ export default function App() {
     seconds: 0,
   });
 
+  // Calculate countdown to wedding date
   useEffect(() => {
     const target = new Date("2025-12-20T00:00:00");
     const tick = () => {
@@ -152,7 +154,11 @@ export default function App() {
           <br />
           OUR SPECIAL DAY ON
         </h2>
-        <img src="img/wedding-date.png" alt="Wedding-date" className="wedding-img" />
+        <img
+          src="img/wedding-date.png"
+          alt="Wedding-date"
+          className="wedding-img"
+        />
 
         <div className="timer">
           <div>
@@ -213,13 +219,19 @@ export default function App() {
 
       {/* Location */}
       <section id="map" className="location-section">
-        <h2>LOCATION <br></br>📍 กะทิบ้านอาหารไทยและขนม</h2>
+        <h2>
+          LOCATION <br></br>📍 กะทิบ้านอาหารไทยและขนม
+        </h2>
         <img
           src="img/restaurant.jpg"
           alt="restaurant"
           className="location-img"
         />
-        <img src="img/wedding-map.png" alt="Wedding-map" className="location-img" />
+        <img
+          src="img/wedding-map.png"
+          alt="Wedding-map"
+          className="location-img"
+        />
       </section>
 
       {/* MAP */}
@@ -252,11 +264,7 @@ export default function App() {
         <a href="#map">แผนที่</a>
       </nav>
 
-      <audio
-        ref={audioRef}
-        src="music/perfect.mp3"
-        loop
-      />
+      <audio ref={audioRef} src="music/perfect.mp3" loop />
     </>
   );
 }
