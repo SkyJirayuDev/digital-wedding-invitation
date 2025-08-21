@@ -138,15 +138,21 @@ header .logo {
 }
 .schedule-section {
   text-align: center;
-  padding: 2rem 0;
+  padding-top: 1rem;
   background: #fff;
 }
 .schedule-section h2 {
   font-size: 1.5rem;
   margin-bottom: 2rem;
 }
-.wedding-img {
+.wedding-img-1 {
+  object-fit: cover;
   width: 100%;
+  height: auto;
+}
+.wedding-img {
+  object-fit: cover;
+  width: 50%;
   height: auto;
 }
 .schedule-img {
@@ -156,7 +162,7 @@ header .logo {
 }
 .schedule-img-1{
   object-fit: cover;
-  width: 25%;
+  width: 27%;
   height: auto;
 }
 .video-wrapper {

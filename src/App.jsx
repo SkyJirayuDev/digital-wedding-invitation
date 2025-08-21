@@ -144,11 +144,11 @@ export default function App() {
       <img
         src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471249/IMG_0131_qx5aik.jpg"
         alt="Wedding"
-        className="wedding-img"
+        className="wedding-img-1" id="details"
       />
 
       {/* COUNTDOWN */}
-      <section id="details" className="countdown">
+      <section className="countdown">
         <h2>
           LET’S CELEBRATE TOGETHER ON
           <br />
