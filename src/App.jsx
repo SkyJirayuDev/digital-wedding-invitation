@@ -183,7 +183,7 @@ export default function App() {
           className="calendar-btn"
           onClick={() =>
             window.open(
-              "https://calendar.google.com/calendar/render?action=TEMPLATE&text=งานแต่งงาน+จิรายุ+&dates=20270624T170000Z/20270625T070000Z&details=ขอเชิญร่วมงานแต่งงานของเราที่กรุงเทพฯ&location=กะทิบ้านอาหารไทย",
+              "https://calendar.google.com/calendar/render?action=TEMPLATE&text=งานแต่งงาน+แป้งและก้อง+&dates=20270624T170000Z/20251220T070000Z&details=เชิญร่วมพิธีฉลองแต่งงานของแป้งและก้อง&location=กะทิบ้านอาหารไทย",
               "_blank"
             )
           }
@@ -195,7 +195,8 @@ export default function App() {
       {/* SCHEDULE */}
       <section className="schedule-section">
         <h2>SCHEDULE</h2>
-        <img src="img/savetheday.png" alt="Schedule" className="schedule-img" />
+        <img src="img/savetheday1-1.png" alt="Schedule" className="schedule-img-1" />
+        <img src="img/savetheday1-2.png" alt="Schedule" className="schedule-img" />
       </section>
 
       {/* GALLERY */}

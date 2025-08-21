@@ -143,7 +143,7 @@ header .logo {
 }
 .schedule-section h2 {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 .wedding-img {
   width: 100%;
@@ -152,6 +152,11 @@ header .logo {
 .schedule-img {
   object-fit: cover;
   width: 100%;
+  height: auto;
+}
+.schedule-img-1{
+  object-fit: cover;
+  width: 25%;
   height: auto;
 }
 .video-wrapper {
