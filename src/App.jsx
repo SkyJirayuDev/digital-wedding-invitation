@@ -144,7 +144,8 @@ export default function App() {
       <img
         src="https://res.cloudinary.com/dslqqqxil/image/upload/v1752471249/IMG_0131_qx5aik.jpg"
         alt="Wedding"
-        className="wedding-img-1" id="details"
+        className="wedding-img-1"
+        id="details"
       />
 
       {/* COUNTDOWN */}
@@ -181,12 +182,20 @@ export default function App() {
 
         <button
           className="calendar-btn"
-          onClick={() =>
+          onClick={() => {
+            const params = new URLSearchParams({
+              action: "TEMPLATE",
+              text: "งานแต่งงาน แป้งและก้อง",
+              dates: "20251220T100000/20251220T150000",
+              details: "เชิญร่วมพิธีฉลองแต่งงานของแป้งและก้อง",
+              location: "กะทิบ้านอาหารไทย",
+              ctz: "Asia/Bangkok", 
+            });
             window.open(
-              "https://calendar.google.com/calendar/render?action=TEMPLATE&text=งานแต่งงาน+แป้งและก้อง+&dates=20251220T100000Z/20251220T150000Z&details=เชิญร่วมพิธีฉลองแต่งงานของแป้งและก้อง&location=กะทิบ้านอาหารไทย",
+              `https://calendar.google.com/calendar/render?${params.toString()}`,
               "_blank"
-            )
-          }
+            );
+          }}
         >
           ADD TO CALENDAR
         </button>
@@ -195,8 +204,16 @@ export default function App() {
       {/* SCHEDULE */}
       <section className="schedule-section">
         <h2>SCHEDULE</h2>
-        <img src="img/savetheday1-1.png" alt="Schedule" className="schedule-img-1" />
-        <img src="img/savetheday1-2.png" alt="Schedule" className="schedule-img" />
+        <img
+          src="img/savetheday1-1.png"
+          alt="Schedule"
+          className="schedule-img-1"
+        />
+        <img
+          src="img/savetheday1-2.png"
+          alt="Schedule"
+          className="schedule-img"
+        />
       </section>
 
       {/* GALLERY */}
