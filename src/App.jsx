@@ -183,7 +183,7 @@ export default function App() {
           className="calendar-btn"
           onClick={() =>
             window.open(
-              "https://calendar.google.com/calendar/render?action=TEMPLATE&text=งานแต่งงาน+แป้งและก้อง+&dates=20270624T170000Z/20251220T070000Z&details=เชิญร่วมพิธีฉลองแต่งงานของแป้งและก้อง&location=กะทิบ้านอาหารไทย",
+              "https://calendar.google.com/calendar/render?action=TEMPLATE&text=งานแต่งงาน+แป้งและก้อง+&dates=20251220T100000Z/20251220T150000Z&details=เชิญร่วมพิธีฉลองแต่งงานของแป้งและก้อง&location=กะทิบ้านอาหารไทย",
               "_blank"
             )
           }
